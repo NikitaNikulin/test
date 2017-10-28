@@ -1,11 +1,22 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env
+
 /public_html/images/uploads
 /public_html/uploads/images
-/.idea
-/vendor
-/node_modules
 /public_html/min/
+/public_html/sitemap.xml
+/public_html/sitemaps
 
-.env
 /nbproject
 
 .env.local
