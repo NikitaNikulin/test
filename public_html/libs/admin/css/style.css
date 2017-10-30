@@ -1,0 +1,58 @@
+.top-container {
+    margin-top: 20px;
+}
+.left-container{
+    width: 500px;
+    position: relative;
+}
+.left-container .jumbotron{
+    padding-left: 0;
+    padding-right: 0;
+}
+.left-container-results{
+    width: 500px;
+    float: left;
+    overflow: hidden;
+}
+
+#ymaps-map {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+#catalogContainer{
+    z-index: 1;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+}
+.pull-left{
+    float:left;
+}
+.clearfix{
+    clear:both;
+}
+.comments{
+    margin-right: 5px;
+}
+.result-item-image{
+    padding-right: 10px;
+}
+.result-item-content{
+    padding-left: 0;
+}
+.result-item-photos{
+    margin-right: 2px;
+}
+.result-photos-badge{
+    position: absolute;
+    bottom: 30px;
+    left: 25px;
+}
+.result-heart-badge{
+    position: absolute;
+    bottom: 30px;
+    left: 100px;
+}

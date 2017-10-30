@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
 		});
 
 		Blade::directive('ReplaceBlock', function($params) {
-			$cleanedParamsString = str_replace(' ', '', substr(trim(preg_replace('/\s\s+/', ' ', $params)), 1, -1));
+			$cleanedParamsString = str_replace(' ', '', trim(preg_replace('/\s\s+/', ' ', $params)));
 			$cleanedParamsArr = explode(',[', $cleanedParamsString);
 			$blockFullPath = str_replace(['"', "'"], '', $cleanedParamsArr[0]);
 			$blockPath = explode('._', $blockFullPath);
@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
 	protected function getEchoString($type, $params)
 	{
 		if(strpos($params, 'type')) {
-			$params = substr(trim(preg_replace('/\s\s+/', ' ', $params)), 2, -2);
+			$params = substr(trim(preg_replace('/\s\s+/', ' ', $params)), 1, -1);
 			$parametrizedVars = $this->parametrizeVars($params, 'b_counter');
 		} else
 			$parametrizedVars = '';
