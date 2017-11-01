@@ -187,7 +187,7 @@ return [
 		 * SleepingOwl Service Provider
 		 */
 	    SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
-	    App\Providers\AdminSectionsServiceProvider::class,
+	    Admin\Providers\AdminSectionsServiceProvider::class,
 
         /*
          * Package Service Providers...

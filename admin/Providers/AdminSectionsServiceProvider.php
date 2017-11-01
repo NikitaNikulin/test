@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Providers;
+namespace Admin\Providers;
 
 use Admin\Http\Sections\Administrators;
-use App\Admin\Policies\AdministratorsSectionModelPolicy;
 use App\Models\Administrator;
 use Illuminate\Routing\Router;
 use SleepingOwl\Admin\Contracts\Navigation\NavigationInterface;

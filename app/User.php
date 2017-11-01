@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\BaseModel;
+use Hash;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
@@ -13,7 +14,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends BaseModel implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
-	use Notifiable, Authenticatable, Authorizable, CanResetPassword;
+	use HasRoles, Notifiable, Authenticatable, Authorizable, CanResetPassword;
 
 	/**
 	 * The attributes that are mass assignable.
@@ -34,40 +35,31 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
 		'password', 'remember_token',
 	];
 
-	public function roles()
+	public function setRolesAttribute($roles)
 	{
-		return $this->belongsToMany(Role::class);
+		$this->roles()->detach();
+		if ( ! $roles) return;
+		if ( ! $this->exists) $this->save();
+
+		$this->roles()->attach($roles);
 	}
 
-	public function authorizeRoles($roles)
+	public function setPasswordAttribute($value)
 	{
-		if ($this->hasAnyRole($roles)) {
-			return true;
+		if ( ! empty($value))
+		{
+			$this->attributes['password'] = Hash::make($value);
 		}
-		abort(401, 'This action is unauthorized.');
 	}
 
-	public function hasAnyRole($roles)
-	{
-		if (is_array($roles)) {
-			foreach ($roles as $role) {
-				if ($this->hasRole($role)) {
-					return true;
-				}
-			}
-		} else {
-			if ($this->hasRole($roles)) {
-				return true;
-			}
-		}
-		return false;
+	public function hasRoleFix($role){
+		return $this->roles->filter(function($item) use($role){
+			return $item['name'] == $role;
+		})->count();
 	}
 
-	public function hasRole($role)
+	public function isSuperAdmin()
 	{
-		if ($this->roles()->where('name', $role)->first()) {
-			return true;
-		}
-		return false;
+		return $this->hasRoleFix('admin');
 	}
 }

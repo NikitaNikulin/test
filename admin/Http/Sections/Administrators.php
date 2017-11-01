@@ -9,6 +9,7 @@ use AdminFormElement;
 use App\Role;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
+use SleepingOwl\Admin\Model\ModelConfigurationManager;
 use SleepingOwl\Admin\Section;
 use SleepingOwl\Admin\Contracts\Initializable;
 
@@ -26,13 +27,17 @@ class Administrators extends Section  /*implements Initializable*/
      *
      * @var bool
      */
-    protected $checkAccess = true;
+    protected $checkAccess = false;
 
     /**
      * @var string
      */
     protected $title = 'Administrators';
 
+	/**
+	 * @var \App\Models\Administrator
+	 */
+	protected $model;
 //    /**
 //     * Initialize class.
 //     */
