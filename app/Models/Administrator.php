@@ -2,25 +2,23 @@
 
 namespace App\Models;
 
+use App\HasRoles;
+use App\Role;
 use Hash;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class Administrator extends Model implements AuthenticatableContract
 {
-    use Authenticatable, EntrustUserTrait;
+    use Authenticatable, HasRoles;
 
+	protected $with = ['roles'];
     protected $fillable = [
-        'username',
-        'password',
-        'name',
+        'username', 'password', 'name',
     ];
-
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
     ];
 
 	public function projects()
@@ -58,5 +56,10 @@ class Administrator extends Model implements AuthenticatableContract
 		return $this->roles->filter(function($item) use($role){
 			return $item['name'] == $role;
 		})->count();
+	}
+
+	public function isSuperAdmin()
+	{
+		return $this->hasRoleFix('admin');
 	}
 }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
+use Illuminate\Support\Facades\Input;
 
 class CustomCollection extends Collection
 {
@@ -107,7 +108,7 @@ class CustomCollection extends Collection
 
 	public function customPaginator($perPage) {
 		$allItems = $this;
-		$input = \Input::all();
+		$input = Input::all();
 		if (isset($input['page']) && !empty($input['page'])) { $currentPage = $input['page']; } else { $currentPage = 1; }
 		$items = $allItems->forPage($currentPage, $perPage); //Filter the page var
 		$pagedItems = new Paginator($items, count($allItems), $perPage, $currentPage);

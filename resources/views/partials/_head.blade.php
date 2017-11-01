@@ -1,6 +1,6 @@
 <head>
 	<link rel="icon" href="/favicon.ico">
-	<title>{{ isset($metatitle) && $metatitle ? $metatitle : config('admin.title') }}</title>
+	<title>{{ isset($metatitle) && $metatitle ? $metatitle : config('sleeping_owl.title') }}</title>
     <meta name="description" content="{{ isset($metadesc) ? $metadesc : null }}">
     <meta name="keywords" content="{{ isset($metakeyw) ? $metakeyw : null }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">

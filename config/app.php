@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'ru',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -90,7 +90,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'ru',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,10 +169,25 @@ return [
 	    Barryvdh\Debugbar\ServiceProvider::class,
 	    Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 	    Jenssegers\Agent\AgentServiceProvider::class,
-	    SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
 	    Collective\Html\HtmlServiceProvider::class,
 	    Intervention\Image\ImageServiceProvider::class,
+	    DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+	    Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider::class,
+	    Msurguy\Honeypot\HoneypotServiceProvider::class,
+	    Mews\Captcha\CaptchaServiceProvider::class,
+	    Baum\Providers\BaumServiceProvider::class,
+	    Darryldecode\Cart\CartServiceProvider::class,
+	    Unisharp\Ckeditor\ServiceProvider::class,
+	    Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
+	    Intervention\Image\ImageServiceProvider::class,
+	    Royalmar\HtmlDomParser\HtmlDomParserServiceProvider::class,
+	    Roumen\Sitemap\SitemapServiceProvider::class,
 
+	    /*
+		 * SleepingOwl Service Provider
+		 */
+	    SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
+	    App\Providers\AdminSectionsServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -237,10 +252,18 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+        'LocalizedCarbon'   => Laravelrus\LocalizedCarbon\LocalizedCarbon::class,
+        'DiffFormatter'     => Laravelrus\LocalizedCarbon\DiffFactoryFacade::class,
+        'Honeypot' => Msurguy\Honeypot\HoneypotFacade::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'HtmlDomParser' => Royalmar\HtmlDomParser\HtmlDomParser::class,
     ],
 
 ];
